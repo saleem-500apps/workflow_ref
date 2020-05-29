@@ -94,7 +94,7 @@ class Toolbar {
   }
 
   save(obj) {
-      Modal.close('nodeModal','modal-content');
+      Modal.close('nodeModal');
       let step = global.workflowJSON.fields.find(i => i.name == obj.id);
       const html = this.getStepTemplate({ event: obj.event, name: step.name, icon: step.icon, id: step.UUID }, require('./html/workspace/node.html'));
       document.getElementById("canvas").insertAdjacentHTML('beforeend', html);
