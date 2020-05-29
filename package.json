@@ -1,0 +1,43 @@
+{
+  "name": "designer",
+  "version": "1.0.0",
+  "description": "- Setup using visual studio code. Install extension prettier and eslint. - Steps: yarn, and then yarn dev. It will open the localhost:8080 - Make changes and it will keep changing",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "html-loader": "^1.1.0",
+    "jsplumb": "^2.13.2",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "css-loader": "^3.5.3",
+    "eslint": "^7.1.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx webpack --config webpack.config.js",
+    "dev": "webpack-dev-server --inline",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/500apps2/designer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/500apps2/designer/issues"
+  },
+  "homepage": "https://github.com/500apps2/designer#readme"
+}

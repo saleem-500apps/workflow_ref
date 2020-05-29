@@ -1,0 +1,16 @@
+<div class="mt-2">
+    <p class="mb-1">{{step.label}}</p>
+    <% if(step.fieldType == 'input') { %>
+    <input type="{{step.type}}" name="{{step.name}}" id="{{step.name}}" class="form-control" title="{{step.title}}" />
+    <% } else if(step.fieldType == 'textarea'){ %>
+    <textarea name="{{step.name}}" id="{{step.name}}" class="form-control" title="{{step.title}}"></textarea>
+    <% } else if(step.fieldType == 'select'){ %>
+    <select name="{{step.name}}" id="{{step.name}}" class="form-control" title="{{step.title}}">
+        <% _.forEach(step.options, function(key,value) { %>
+        <option value="{{key}}"><%- value %></option>
+        <% }); %>
+    </select>
+    <% } else { %>
+    <input type="password" />
+    <% } %>
+</div>

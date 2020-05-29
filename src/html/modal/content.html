@@ -1,0 +1,17 @@
+<h5>{{label}}</h5>
+<div class="d-flex mb-4" style="height: 75px;">
+    <img id="icon" border="0" src="https://our.appup.com/app/designer/{{icon}}" width="66px" height="66px" style="float:left;margin-right: 10px">
+    <p class="border p-3 mr-3 overflow-scroll" style="width: 360px;">{{info}}</p>
+    <div class="border p-2">
+        <b>Node name</b>
+        <p class="border p-1 ellipsis" style="width: 185px;">{{name}}</p>
+    </div>
+</div>
+<ul class="nav nav-tabs" id="tabsui"></ul>
+<form id="main-form" name="main-form">
+    <div class="tab-content" id="tabcontentui"></div>
+</form>
+<div class="d-flex mt-4 float-right">
+    <button class="btn btn-primary" onclick="{{method}}({'id': '{{data.id}}', 'UUID': '{{data.UUID}}',})">{{type}}</button>
+    <button class="btn btn-secondary ml-3" onclick="Modal.close('nodeModal','modal-content')">Cancel</button>
+</div>

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Designer</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="Global.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.13.2/js/jsplumb.min.js" type="application/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.13.2/js/jsplumb.js" type="application/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.13.2/css/jsplumbtoolkit-defaults.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.13.2/css/jsplumbtoolkit-defaults.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.13.2/css/jsplumbtoolkit-defaults.min.css.map" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="toolbar/main.js"></script>
+    <script src="toolbar/slider.js"></script>
+    <!--<script src="toolbar/event.js"></script>
+    <script src="src/index.js"></script>-->
+</head>
+
+  <body>
+    <div class="row" style="margin: 0px; padding: 25px;">
+      <div class="col-md-2" style="height: 100%; overflow: auto;">
+        <div class="form-group has-feedback has-search">
+          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+          <input type="text" class="form-control" onkeyup="search(event)" placeholder="Node Search" />
+        </div>
+        <div class="panel-group" id="accordion"></div>
+      </div>
+      <div class="col-md-9" id="workspce" style="padding: 30px; height: 100%; overflow: hidden; z-index: 0;">
+        <div data-demo-id="flowchart">
+          <div class="jtk-demo-main" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="jtk-demo-canvas canvas-wide flowchart-demo jtk-surface jtk-surface-nopan" style="border: 1px solid #aaa; height: 560px;" id="canvas">
+              <div class="window jtk-node" id="flowchartstart">
+                <div class="startFlag">
+                  <img width="100%" height="100%" src="https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Actions-flag-green-icon.png" />
+                  <p style="font-weight: bold;">Start</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('myModal')">&times;</span>
+        <div id="modal-content"></div>
+      </div>
+    </div>
+    <div id="gridModal" class="modal" style="padding-top: 100px;">
+      <div class="grid-modal-content">
+        <span class="close" onclick="closeModal('gridModal')">&times;</span>
+        <div id="grid-modal-content"></div>
+      </div>
+    </div>
+    <script>
+      getJson();
+    </script>
+  </body>
+</html>

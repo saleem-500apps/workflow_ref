@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Getting Started</title>
+    <script src="https://unpkg.com/lodash@4.16.6"></script>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <!--JSPlumb-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.13.2/js/jsplumb.min.js" type="application/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.13.2/js/jsplumb.js" type="application/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.13.2/css/jsplumbtoolkit-defaults.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.13.2/css/jsplumbtoolkit-defaults.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.13.2/css/jsplumbtoolkit-defaults.min.css.map" />
+</head>
+<body>
+    <script src="main.js"></script>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-1 collapse show d-md-flex bg-light pt-2 pl-0 min-vh-100" id="sidebar">
+                <ul class="nav flex-column flex-nowrap overflow-hidden" id="sidebarui"></ul>
+            </div>
+            <div class="col-md-9" id="workspce" style="padding: 30px; height: 100%; overflow: hidden; z-index: 0;">
+                <div data-demo-id="flowchart">
+                    <div class="jtk-demo-main" ondrop="Workspace.drop(event)" ondragover="Workspace.allowDrop(event)">
+                        <div class="jtk-demo-canvas canvas-wide flowchart-demo jtk-surface jtk-surface-nopan" style="border: 1px solid #aaa; height: 560px;" id="canvas">
+                            <div class="window jtk-node" id="flowchartstart">
+                                <div class="startFlag">
+                                    <img width="100%" height="100%" src="https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Actions-flag-green-icon.png" />
+                                    <p style="font-weight: bold;">Start</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="Modal.close('nodeModal','modal-content')">&times;</span>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+    <div id="gridModal" class="modal" style="padding-top: 100px;">
+        <div class="grid-modal-content">
+            <span class="close" onclick="Modal.close('gridModal','grid-modal-content')">&times;</span>
+            <div id="grid-modal-content"></div>
+        </div>
+    </div>
+</body>
+</html>
