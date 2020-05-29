@@ -1,4 +1,60 @@
 //import jsPlumb from 'jsplumb';
+var connectorPaintStyle = {
+    strokeWidth: 2,
+    stroke: '#61B7CF',
+    joinstyle: 'round',
+    outlineStroke: 'white',
+    outlineWidth: 2,
+};
+// .. and this is the hover style.
+var connectorHoverStyle = {
+    strokeWidth: 3,
+    stroke: '#216477',
+    outlineWidth: 5,
+    outlineStroke: 'white',
+};
+var endpointHoverStyle = {
+    fill: '#216477',
+    stroke: '#216477',
+};
+// The definition of source endpoints (the small blue ones)
+var sourceEndpoint = {
+    endpoint: 'Dot',
+    paintStyle: {
+        stroke: '#7AB02C',
+        fill: 'transparent',
+        radius: 7,
+        strokeWidth: 1,
+    },
+    isSource: true,
+    connector: ['Flowchart', { stub: [40, 60], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }],
+    connectorStyle: connectorPaintStyle,
+    hoverPaintStyle: endpointHoverStyle,
+    connectorHoverStyle: connectorHoverStyle,
+    dragOptions: {},
+    overlays: [
+        [
+            'Label',
+            {
+                location: [0.5, 1.5],
+                label: '', // Drag
+                cssClass: 'endpointSourceLabel',
+                visible: true,
+            },
+        ],
+    ],
+};
+// The definition of target endpoints (will appear when the user drags a connection)
+var targetEndpoint = {
+    endpoint: 'Dot',
+    paintStyle: { fill: '#7AB02C', radius: 7 },
+    hoverPaintStyle: endpointHoverStyle,
+    maxConnections: -1,
+    dropOptions: { hoverClass: 'hover', activeClass: 'active' },
+    isTarget: true,
+    overlays: [['Label', { location: [0.5, -0.5], label: '', cssClass: 'endpointTargetLabel', visible: true }]],
+};
+
 class Workspace {
   init() {
     debugger;
@@ -36,7 +92,26 @@ class Workspace {
       });
       
       // Deserialize
-      that.deserialize();
+        that.deserialize();
+        /*var basicType = {
+            connector: "StateMachine",
+            paintStyle: { stroke: "red", strokeWidth: 4 },
+            hoverPaintStyle: { stroke: "blue" },
+            overlays: [
+                "Arrow"
+            ]
+        };
+        that.jsPlumb.registerConnectionType("basic", basicType);
+        that.jsPlumb.batch(function () {
+            this._addEndpoints("flowchartstart", ["BottomCenter"], []);
+            that.jsPlumb.draggable(jsPlumb.getSelector(".flowchart-demo .window"), { grid: [10, 10] });
+        });
+        that.jsPlumb.bind("dblclick", function (conn, originalEvent) {
+            if (confirm("Delete connection from " + conn.sourceId + " to " + conn.targetId + "?"))
+                that.jsPlumb.deleteConnection(conn);
+            conn.toggleType("basic");
+        });
+        jsPlumb.fire("jsPlumbDemoLoaded", that.jsPlumb); */
     });
 
     //
@@ -57,7 +132,7 @@ class Workspace {
     };
     global.instance.registerConnectionType("basic", basicType);
     global.instance.batch(function () {
-        _addEndpoints("flowchartstart", ["BottomCenter"], []);
+        this._addEndpoints("flowchartstart", ["BottomCenter"], []);
         global.instance.draggable(jsPlumb.getSelector(".flowchart-demo .window"), { grid: [10, 10] });
     });
     global.instance.bind("dblclick", function (conn, originalEvent) {
@@ -65,63 +140,12 @@ class Workspace {
         global.instance.deleteConnection(conn);
         conn.toggleType("basic");
     });
-    jsPlumb.fire("jsPlumbDemoLoaded", global.instance); 
+    //jsPlumb.fire("jsPlumbDemoLoaded", global.instance); 
     // Read dataJSON from a file from data folder to test for now
   }
 
   _addEndpoints(toId, sourceAnchors, targetAnchors) {
       debugger;
-      var sourceEndpoint = {
-          endpoint: "Dot",
-          paintStyle: {
-              stroke: "#7AB02C",
-              fill: "transparent",
-              radius: 7,
-              strokeWidth: 1
-          },
-          isSource: true,
-          connector: ["Flowchart", { stub: [40, 60], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }],
-          connectorStyle: {
-              strokeWidth: 2,
-              stroke: "#61B7CF",
-              joinstyle: "round",
-              outlineStroke: "white",
-              outlineWidth: 2
-          },
-          hoverPaintStyle: {
-              fill: "#216477",
-              stroke: "#216477"
-          },
-          connectorHoverStyle: {
-              strokeWidth: 3,
-              stroke: "#216477",
-              outlineWidth: 5,
-              outlineStroke: "white"
-          },
-          dragOptions: {},
-          overlays: [
-              ["Label", {
-                  location: [0.5, 1.5],
-                  label: "",  //Drag
-                  cssClass: "endpointSourceLabel",
-                  visible: true
-              }]
-          ]
-      }
-      var targetEndpoint = {
-          endpoint: "Dot",
-          paintStyle: { fill: "#7AB02C", radius: 7 },
-          hoverPaintStyle: {
-              fill: "#216477",
-              stroke: "#216477"
-          },
-          maxConnections: -1,
-          dropOptions: { hoverClass: "hover", activeClass: "active" },
-          isTarget: true,
-          overlays: [
-              ["Label", { location: [0.5, -0.5], label: "", cssClass: "endpointTargetLabel", visible: true }]
-          ]
-      }
      for (var i = 0; i < sourceAnchors.length; i++) {
        var sourceUUID = toId + sourceAnchors[i];
        global.instance.addEndpoint(toId, sourceEndpoint, {
