@@ -86,19 +86,14 @@ class Toolbar {
     console.log(obj);
     Modal.show(obj);
     event = obj.event;
-    /*let step = global.workflowJSON.fields.find(i => i.name == obj.id);
-    const html = this.getStepTemplate({ event: obj.event, name: step.name, icon: step.icon, id: step.UUID }, require('./html/workspace/node.html'));
-    document.getElementById("canvas").insertAdjacentHTML('beforeend', html);
-    Workspace._addEndpoints(obj.UUID, ["LeftMiddle", "RightMiddle"], ["TopCenter"]);
-    global.instance.draggable(jsPlumb.getSelector(".flowchart-demo .window"), { grid: [5, 5] });*/
 
     // Show modal or do something
   }
 
   save(obj) {
-      Modal.close('nodeModal');
+      Modal.close('nodeModal','modal-content');
       let step = global.workflowJSON.fields.find(i => i.name == obj.id);
-      const html = this.getStepTemplate({ event: event, name: step.name, icon: step.icon, id: step.UUID }, require('./html/workspace/node.html'));
+      const html = this.getStepTemplate({ event: event, name: step.name, icon: step.icon, id: obj.UUID }, require('./html/workspace/node.html'));
       document.getElementById("canvas").insertAdjacentHTML('beforeend', html);
       Workspace._addEndpoints(obj.UUID, ["LeftMiddle", "RightMiddle"], ["TopCenter"]);
       global.instance.draggable(jsPlumb.getSelector(".flowchart-demo .window"), { grid: [5, 5] });
